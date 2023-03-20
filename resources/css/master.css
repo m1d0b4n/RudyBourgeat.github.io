@@ -631,22 +631,22 @@ h1 {
 
 #nav a:hover {
 	background-color: rgba(124, 196, 29, 0.192);
-	color: green;
+	color: rgba(230, 255, 2, 0.452);
 }
 
 .paginationLinks,
 .detailLinks {
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	padding: 0.4rem;
 }
 
 .next {
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	color: #19191975 !important;
 }
 
 .previous {
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	color: #19191975 !important;
 }
 

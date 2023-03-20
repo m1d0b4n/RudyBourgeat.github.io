@@ -1,0 +1,25 @@
+#nav {
+	background-color: rgba(92, 205, 111, 0.425);
+	border-radius: 2.4rem;
+	padding: 1.7rem;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2rem;
+}
+
+#nav a {
+	text-decoration: none;
+	color: rgba(245, 245, 245, 0.582);
+	border: solid 0.1rem;
+	border-radius: 1rem;
+	font-weight: bolder;
+	font-size: 1.6rem;
+	padding: 1rem;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
+
+#nav a:hover {
+	background-color: rgba(124, 196, 29, 0.192);
+	color: rgba(230, 255, 2, 0.452);
+}
