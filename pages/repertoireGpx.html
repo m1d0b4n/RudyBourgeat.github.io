@@ -1,5 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,15 +9,11 @@
     <title>Données GPX de randonnées</title>
     <link rel="stylesheet" type="text/css" media="screen" title="Custom Settings" href="../content/custom.css">
     <link rel="stylesheet" type="text/css" media="screen" title="Custom Settings" href="../resources/css/master.css">
+    
+    <!-- import de la librairie de la gestion de map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
-
-    <script type="text/javascript">
-        window.AgMode = "publish";
-        cellRolloverColor = "#A1A1A1";
-        cellColor = "#949494";
-    </script>
-    <script type="text/javascript" src="../resources/js/live_update.js">
-    </script>
 </head>
 
 <body>
@@ -29,7 +25,51 @@
     </nav>
     <h1>Ici, tu trouveras les fichiers de trace gps des randonnées que j'ai pu faire</h1>
 
-    <a href="../content/gpxData/Picos de Europa/Day1--picos-de-europa.kgl.html">Picos de Europa - Jour 1</a>
+    <!-- la map -->
+    <div id="map" style="height: 400px; width: 100%;"></div>
+
 </body>
+
+<script>
+
+	const map = L.map('map').setView([51.505, -0.09], 13);
+
+	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+
+	const marker = L.marker([51.5, -0.09]).addTo(map)
+		.bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
+
+	const circle = L.circle([51.508, -0.11], {
+		color: 'red',
+		fillColor: '#f03',
+		fillOpacity: 0.5,
+		radius: 500
+	}).addTo(map).bindPopup('I am a circle.');
+
+	const polygon = L.polygon([
+		[51.509, -0.08],
+		[51.503, -0.06],
+		[51.51, -0.047]
+	]).addTo(map).bindPopup('I am a polygon.');
+
+
+	const popup = L.popup()
+		.setLatLng([51.513, -0.09])
+		.setContent('I am a standalone popup.')
+		.openOn(map);
+
+	function onMapClick(e) {
+		popup
+			.setLatLng(e.latlng)
+			.setContent(`You clicked the map at ${e.latlng.toString()}`)
+			.openOn(map);
+	}
+
+	map.on('click', onMapClick);
+
+</script>
 
 </html>
